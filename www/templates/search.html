@@ -77,57 +77,69 @@
                                 <table ng-show="complete">
                                     <tbody>
                                         <tr>
-                                             <th>Age
-                                        </th>
+                                            <th>Age
+                                            </th>
                                             <td>
-                                               {{result.Age}}
+                                                {{result.Age}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Month
-                                        </th>
+                                            </th>
                                             <td>
                                                 {{result.Month}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Weeks
-                                        </th>
+                                            </th>
                                             <td>{{result.Weeks}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Days
-                                        </th>
+                                            </th>
                                             <td>{{result.Days}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>hours
-                                        </th>
+                                            </th>
                                             <td>{{result.hours}}
                                             </td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <th>Mins
-                                        </th>
+                                            </th>
                                             <td>{{result.Mins}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Seconds
-                                        </th>
+                                            </th>
                                             <td>{{result.Seconds}}
                                             </td>
                                         </tr>
-<tr><td>
-    {{result.nextbirthday}}
-    </td>
+                                        <tr>
+                                            <td>
+                                                {{result.nextbirthday}}
+                                            </td>
                                         </tr>
 
 
-
+<div class="item item-icon-left" ion-datetime-picker date ng-model="dateValue">
+                <i class="icon ion-ios-calendar positive"></i>
+                Click me to open the date picker:
+                <strong>{{dateValue| date: "yyyy-MM-dd"}}</strong>
+            </div>
+            
+           
+            <div class="item item-icon-left" ion-datetime-picker time ng-model="timeValue">
+                <i class="icon ion-ios-clock positive"></i>
+                Basic time picker:
+                <strong>{{timeValue| date: "H:mm"}}</strong>
+            </div>
                                     </tbody>
                                 </table>
 

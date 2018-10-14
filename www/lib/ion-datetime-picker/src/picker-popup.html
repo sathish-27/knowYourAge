@@ -8,10 +8,11 @@
         <select ng-model="bind.month" ng-options="i18n.months.indexOf(month) as month for month in i18n.months" ng-change="change('month')"></select>
       </div>
     </label>
-    <label class="col year-input">
-      <div class="item item-input">
+    <label class="col col-50 year-input">
+      <div class="item item-input item-select">
         <div>
-          <input type="number" ng-model="bind.year" min="1900" max="2999" ng-change="change('year')" ng-blur="changed()" required>
+         <select ng-model="bind.year" ng-options="i18n.year.indexOf(year) as year for year in i18n.years" ng-change="change('year')" required></select>
+         <!-- <input type="number" ng-model="bind.year" min="1900" max="2999" ng-change="change('year')" ng-blur="changed()" required>-->
         </div>
       </div>
     </label>
