@@ -1,153 +1,69 @@
 <ion-view view-title="Search" ng-controller="AppCtrl">
     <ion-content>
         <form name="agecalc">
-            <center>
-                <table>
-                    <tr>
-                        <td>
-                            <center>
-                                <FONT style="FONT-SIZE: 18px; FONT-FAMILY: Comic Sans MS">birthday:</FONT>
-                                <select ng-change="invalidate(Age)" size=1 name="fmonth" ng-model="Age.month" required>
-                                    <option selected disabled value="">Select Month</option>
-                                    <option value="{{val.value}}" ng-repeat="val in month">{{val.name}}</option>
-                                </select>
-                                <select ng-change="invalidate(Age)" size=1 name="fmonth" ng-model="Age.day" required>
-                                    <option selected disabled value="">Select day</option>
-                                    <option value="{{value}}" ng-repeat="value in days">{{value}}</option>
-                                </select>
-                                <select ng-change="invalidate(Age)" size=1 name="fmonth" ng-model="Age.year" required>
-                                    <option selected disabled value="">Select year</option>
-                                    <option value="{{value}}" ng-repeat="value in year">{{value}}</option>
-                                </select>
-                            </center>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <center>
-                                <p>{{dayofweek}}</p>
-                            </center>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <center>
-                                <table border=0 cellspacing=0 cellpadding=0>
-                                    <tr>
-                                        <td>
-                                            <table border=0 cellspacing=0 cellpadding=0>
-                                                <tr>
-                                                    <td>
-                                                        <center>
-                                                            <FONT style="FONT-SIZE: 10px; FONT-FAMILY: Comic Sans MS">time of birth (optional)</FONT>
-                                                        </center>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <select ng-change="invalidate(Age)" size=1 name="fmonth" ng-model="Age.fhour" required>
-                                                            <option selected disabled value="">Select hour</option>
-                                                            <option value="{{val.value}}" ng-repeat="val in fhour">{{val.name}}</option>
-                                                        </select>
-                                                        <select ng-change="invalidate(Age)" size=1 name="fmonth" ng-model="Age.fmins" required>
-                                                            <option selected disabled value="">Select mins</option>
-                                                            <option value="{{val.value}}" ng-repeat="val in fmins">{{val.name}}</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border=0 cellspacing=0 cellpadding=0>
-                                                <tr>
-                                                    <td>&nbsp;&nbsp;&nbsp;
-                                                        <INPUT ng-click=intro(Age); type=button name="calculatebutton" value="Know Your Age"> </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </center>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <center>
-                                <!--<textarea name="result" ng-model="result" rows="11" cols="42" style="font-family:'Comic Sans MS';font-size: 18px;background-color: Yellow; ">{{result}}</textarea>-->
-                                <table ng-show="complete">
-                                    <tbody>
-                                        <tr>
-                                            <th>Age
-                                            </th>
-                                            <td>
-                                                {{result.Age}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Month
-                                            </th>
-                                            <td>
-                                                {{result.Month}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Weeks
-                                            </th>
-                                            <td>{{result.Weeks}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Days
-                                            </th>
-                                            <td>{{result.Days}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>hours
-                                            </th>
-                                            <td>{{result.hours}}
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th>Mins
-                                            </th>
-                                            <td>{{result.Mins}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Seconds
-                                            </th>
-                                            <td>{{result.Seconds}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                {{result.nextbirthday}}
-                                            </td>
-                                        </tr>
-
-
-<div class="item item-icon-left" ion-datetime-picker date ng-model="dateValue">
-                <i class="icon ion-ios-calendar positive"></i>
-                Click me to open the date picker:
-                <strong>{{dateValue| date: "yyyy-MM-dd"}}</strong>
+            <div class="row responsive-sm">
+                <div class="col col-30 col-center">
+                   <span class="input-label">choose Date</span>
+                     <div class="item item-icon-left" ion-datetime-picker date ng-change="invalidate(Age)" ng-model="Age.dateValue"> <i class="icon ion-ios-calendar positive"></i> <strong>{{Age.dateValue| date: "yyyy-MM-dd"}}</strong> </div>
+                </div>
             </div>
-            
-           
-            <div class="item item-icon-left" ion-datetime-picker time ng-model="timeValue">
-                <i class="icon ion-ios-clock positive"></i>
-                Basic time picker:
-                <strong>{{timeValue| date: "H:mm"}}</strong>
+            <div class="row">
+                <div class="col col-30 col-center">
+                    <span class="input-label">choose Time</span>
+                    <div class="item item-icon-left" ion-datetime-picker time ng-change="invalidate(Age)" ng-model="Age.timeValue"> <i class="icon ion-ios-clock positive"></i>  <strong>{{Age.timeValue| date: "H:mm"}}</strong> </div>
+                </div>
             </div>
-                                    </tbody>
-                                </table>
-
-                            </center>
-                        </td>
-                    </tr>
+            <div class="row">
+                <div class="col col-50 col-center">
+                  <div class="card" ng-show="dayofweek.length>1">
+  <div class="item item-text-wrap">
+   {{dayofweek}}
+  </div>
+</div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col .col-30 col-center">
+                    <button class="button button-positive" ng-click="intro(Age)">Know Your Age</button>
+                </div>
+            </div>
+            <div class="row">
+                <table ng-show="complete">
+                    <tbody>
+                        <tr>
+                            <th>Age </th>
+                            <td> {{result.Age}} </td>
+                        </tr>
+                        <tr>
+                            <th>Month </th>
+                            <td> {{result.Month}} </td>
+                        </tr>
+                        <tr>
+                            <th>Weeks </th>
+                            <td>{{result.Weeks}} </td>
+                        </tr>
+                        <tr>
+                            <th>Days </th>
+                            <td>{{result.Days}} </td>
+                        </tr>
+                        <tr>
+                            <th>hours </th>
+                            <td>{{result.hours}} </td>
+                        </tr>
+                        <tr>
+                            <th>Mins </th>
+                            <td>{{result.Mins}} </td>
+                        </tr>
+                        <tr>
+                            <th>Seconds </th>
+                            <td>{{result.Seconds}} </td>
+                        </tr>
+                        <tr>
+                            <td> {{result.nextbirthday}} </td>
+                        </tr>
+                    </tbody>
                 </table>
-            </center>
+            </div>
         </form>
     </ion-content>
 </ion-view>
